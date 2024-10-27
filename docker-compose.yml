@@ -26,8 +26,8 @@ services:
     depends_on:
       - db
     ports:
-      - "6902:8069"
-      - "7202:8072"
+      - "6903:8069"
+      - "7203:8072"
     volumes:
       - demo-web-data:/var/lib/odoo
       - ./config/demo:/etc/odoo
@@ -46,8 +46,8 @@ services:
     depends_on:
       - db
     ports:
-      - "6903:8069"
-      - "7203:8072"
+      - "6902:8069"
+      - "7202:8072"
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./config/odoo:/etc/odoo
