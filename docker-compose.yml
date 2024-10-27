@@ -19,8 +19,8 @@ services:
       - postgresql_password
     networks:
       - odoo_network
-  komar:
-    container_name: komar
+  demo:
+    container_name: demo
     image: manzada/merp:17.0
     restart: always
     depends_on:
@@ -29,9 +29,9 @@ services:
       - "6902:8069"
       - "7202:8072"
     volumes:
-      - komar-web-data:/var/lib/odoo
-      - ./config/komar:/etc/odoo
-      - ./addons/komar:/mnt/extra-addons
+      - demo-web-data:/var/lib/odoo
+      - ./config/demo:/etc/odoo
+      - ./addons/demo:/mnt/extra-addons
     environment:
       - PASSWORD_FILE=/run/secrets/postgresql_password
       - TZ=Asia/Jakarta
@@ -46,8 +46,8 @@ services:
     depends_on:
       - db
     ports:
-      - "8069:8069"
-      - "8072:8072"
+      - "6903:8069"
+      - "7203:8072"
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./config/odoo:/etc/odoo
@@ -105,7 +105,7 @@ networks:
 
 volumes:
   lambertus-web-data:
-  komar-web-data:
+  demo-web-data:
   odoo-web-data:
   odoo-db-data:
 
