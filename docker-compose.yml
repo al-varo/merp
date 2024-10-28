@@ -42,9 +42,6 @@ networks:
     driver: bridge
 
 volumes:
-  lambertus-web-data:
-  demo-web-data:
-  odoo-web-data:
   odoo-db-data:
 
 secrets:
