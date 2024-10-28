@@ -67,8 +67,6 @@ services:
           - 80:80
       volumes:
           - ./config/nginx:/etc/nginx/conf.d/:rw
-      depends_on:
-          - "odoo"
       networks:
           - odoo_network
   db:
