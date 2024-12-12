@@ -39,6 +39,26 @@ services:
       - postgresql_password
     networks:
       - odoo_network
+  aka:
+    container_name: aka
+    image: manzada/merp:17.0
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "6904:8069"
+      - "7204:8072"
+    volumes:
+      - aka-web-data:/var/lib/odoo
+      - ./config/aka:/etc/odoo
+      - ./addons/aka:/mnt/extra-addons
+    environment:
+      - PASSWORD_FILE=/run/secrets/postgresql_password
+      - TZ=Asia/Jakarta
+    secrets:
+      - postgresql_password
+    networks:
+      - odoo_network
   odoo:
     container_name: odoo
     image: odoo:8
@@ -104,6 +124,7 @@ networks:
 volumes:
   lambertus-web-data:
   demo-web-data:
+  aka-web-data:
   odoo-web-data:
   odoo-db-data:
 
